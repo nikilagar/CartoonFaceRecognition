@@ -1,0 +1,62 @@
+import LandMarkPointsExtractor.extractAndSaveLandmarkConfigurations as LM
+import cv2
+import numpy as np
+import meshWarping
+from random import randint
+
+counter = 0
+
+def drawPolyLines(imgFile,landMarkPoints):
+    global counter
+    image = cv2.imread(imgFile)
+    finalFeaturePoints = []
+    differentFeatures = [17, 22, 27, 36, 42, 48, 61, 68]
+    pre = 0
+    for i in range(8):
+        listOfPoints = []
+        for j in range(pre, differentFeatures[i]):
+            listOfPoints.append(landMarkPoints[j])
+        pre = j + 1
+        finalFeaturePoints.append(listOfPoints)
+    for i in range(8):
+        arr = np.array(finalFeaturePoints[i])
+        cv2.polylines(image, np.int32([arr]), 0, (0, 255, 0))
+    cv2.imshow(imgFile + str(counter), image)
+
+
+def showCaricature(model1, model2, meanImageCoordinates):
+    global counter
+    imgFile = "Dataset/AlignedFace/4.jpg"
+    initialLandmarkPoints = LM.saveAndReturnLandMarkPoints(imgFile)
+    drawPolyLines(imgFile, initialLandmarkPoints)
+    counter += 1
+
+    X = [initialLandmarkPoints[i][0] for i in range(len(initialLandmarkPoints))]
+    Y = [initialLandmarkPoints[i][1] for i in range(len(initialLandmarkPoints))]
+    Xtest = np.array(X)
+    Ytest = np.array(Y)
+
+    for i in range(len(meanImageCoordinates)):
+        Xtest[i] = Xtest[i] - meanImageCoordinates[i][0]
+        Ytest[i] = Ytest[i] - meanImageCoordinates[i][1]
+
+    lisx = [ Xtest ]
+    lisy = [Ytest]
+    Xtest = np.array(lisx)
+    Ytest = np.array(lisy)
+
+
+    Xtest = model1.predict(Xtest)
+    Ytest = model2.predict(Ytest)
+
+    finalLandMarkPoints = []
+    diffLandMarkPoints = []
+    for i in range(len(X)):
+        X[i] = X[i] + Xtest[0][i] + randint(-10,10)
+        Y[i] = Y[i] + Ytest[0][i] + randint(-10,10)
+        finalLandMarkPoints.append([X[i],Y[i]])
+        diffLandMarkPoints.append([Xtest[0][i], Ytest[0][i]])
+
+    drawPolyLines(imgFile, finalLandMarkPoints)
+    meshWarping.getWarpedImage(imgFile, diffLandMarkPoints)
+    cv2.waitKey(0)
