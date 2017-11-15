@@ -27,7 +27,7 @@ def drawPolyLines(imgFile,landMarkPoints):
 
 def showCaricature(model1, model2, meanImageCoordinates):
     global counter
-    imgFile = "Dataset/RealWorldImage/adi.jpg"
+    imgFile = "Dataset/TestAlignedFace/6.jpg"
     initialLandmarkPoints = LM.saveAndReturnLandMarkPoints(imgFile)
     drawPolyLines(imgFile, initialLandmarkPoints)
     counter += 1

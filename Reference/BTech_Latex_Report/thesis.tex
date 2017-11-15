@@ -1,0 +1,72 @@
+\documentclass{mnnit}
+
+\begin{document}
+\title{Your B.Tech. Project Title}
+\author{Your Name goes here}
+\supervisor{Your Guide Name}
+
+\specialization{Computer Science \& Engineering}
+%\specialization{Computer Science \& Engineering}
+\beforepreface
+\prefacesection{Preface}
+A good B.Tech. thesis is one that helps you in furthering your
+interest in a specific field of study. Whether you plan to work in
+an industry or wish to take up academics as a way of life, your
+thesis plays an important role.
+
+Your thesis should judiciously combine theory with practice. It
+should result in a realization of reasonably complex system
+(software and/or hardware). Given various limitations, it is
+always better to extend your predecessor's work. If you plan it
+properly, you can really build on the experience of your seniors.
+
+\prefacesection{Acknowledgements}
+    Here it will go something like this............It is a great pleasure to thank the giants on whose shoulders I
+    stand. First of all, I would like to thank my supervisor ...
+\afterpreface
+
+\chapter{Introduction}
+This thesis presents the details of writing an B.Tech. thesis
+using \LaTeX ~\cite{lamport}. In the previous line, we used the
+the \~ \ symbol to leave a small space between the name \LaTeX
+~and its citation (appearing in the square brackets). Obviously,
+you need to look at the source \TeX ~file to see how this is
+actually done in practice.
+
+If you really want to master \LaTeX, you should read the other
+excellent book \cite{companion}.
+
+\section{Motivation}
+The motivation for this work is...
+
+\subsection{Some Wonderful Minds}
+ Donald E. Knuth is the Professor Emeritus of \textbf{The Art of Computer
+ Programming} at the \emph{Stanford University}. Leslie Lamport is
+ a researcher at \emph{Microsoft corporation}. It is interesting to know
+ that Knuth was the creator of \TeX, and Lamport of \LaTeX.
+
+\chapter{The Hypothesis}
+In this chapter we shall...
+
+\chapter{Conclusions}
+Finally, we give some examples to show how references are created
+with bibtex entries. This is a chapter in a book \cite{Kristen}.
+This appeared in a conference proceedings \cite{Chen}. However,
+this is a bachelor's thesis! \cite{claus}. Finally, this is an
+article \cite{Normark}.
+
+Please look at the source \texttt{tex} file for more details. In
+fact, this document was created using the same class file that you
+are supposed to use while writing the thesis.
+
+Happy \LaTeX ing!!!
+
+\appendix
+\chapter{Some Complex Proofs and simple Results}
+
+\bibliographystyle{acm}
+
+\bibliography{references}
+
+\addcontentsline{toc}{chapter}{References}
+\end{document}

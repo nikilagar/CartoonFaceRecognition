@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}
+
+\bibitem{claus}
+{\sc Andersen, M.~R., Christensen, C.~N., and S{\o}rensen, K.~L.}
+\newblock Internal documentation in an elucidative environment.
+\newblock Master's thesis, Aalborg University, June 2000.
+\newblock Available from http://dopu.cs.auc.dk.
+
+\bibitem{Chen}
+{\sc Chen, Y.-F.~R., Fowler, G.~S., Koutsofios, E., and Wallach, R.~S.}
+\newblock Ciao: A graphical navigator for software and document repositories.
+\newblock In {\em International Conference on Software Maintenance\/} (1995),
+  pp.~66--75.
+
+\bibitem{companion}
+{\sc Goossens, M., MittelBach, F., and alexander Samarin}.
+\newblock {\em The \LaTeX ~ Comapnion}.
+\newblock Addison-Wesley.
+
+\bibitem{Kristen}
+{\sc Kristensen, B.~B., Madsen, O.~L., Mouller-Pedersen, B., and Nygaard, K.}
+\newblock {\em Integrated Interactive Computing Systems}.
+\newblock North-Holland, Amsterdam, 1983, ch.~Syntax-directed program
+  modularization, pp.~207--219.
+
+\bibitem{lamport}
+{\sc leslie Lamport}.
+\newblock {\em \LaTeX ~ A Document Preparation System}.
+\newblock Pearson Education, India, 2004.
+
+\bibitem{Normark}
+{\sc Nørmark, K.}
+\newblock Elucidative programming.
+\newblock {\em Nordic Journal of Computing 7}, 2 (2000), 87--105.
+
+\end{thebibliography}

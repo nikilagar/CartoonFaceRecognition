@@ -41,7 +41,6 @@ for f in glob.glob(os.path.join(faces_folder_path, "*.jp*g")):
             k, d.left(), d.top(), d.right(), d.bottom()))
         # Get the landmarks/parts for the face in box d.
         shape = predictor(img, d)
-        import pdb;pdb.set_trace()
         print("Part 0: {}, Part 1: {} ...".format(shape.part(0),
                                                   shape.part(1)))
         # Draw the face landmarks on the screen.
