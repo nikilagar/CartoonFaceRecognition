@@ -287,4 +287,5 @@ def getWarpedImage(path, finalLandMarkPoints):
     output = (output * 255).round().astype(np.uint8)
     cv2.imwrite('Dataset/finalFace.jpg', output)
     cv2.imshow("FinalImage",output)
+    return output
     # cv2.waitKey(0);

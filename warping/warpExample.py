@@ -33,7 +33,7 @@ warpMat = cv2.getAffineTransform( np.float32(tri1Cropped), np.float32(tri2Croppe
 
 # Apply the Affine Transform just found to the src image
 img2Cropped = cv2.warpAffine( img1Cropped, warpMat, (r2[2], r2[3]), None, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT_101 )
-
+cv2.warp
 # Get mask by filling triangle
 mask = np.zeros((r2[3], r2[2], 3), dtype=np.float32)
 cv2.fillConvexPoly(mask, np.int32(tri2Cropped), (1.0, 1.0, 1.0));

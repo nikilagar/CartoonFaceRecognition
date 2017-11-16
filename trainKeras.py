@@ -79,7 +79,7 @@ model1.add(Dense(68, activation='linear'))
 model1.compile(loss='mean_squared_error', optimizer='adam')
 print("Model Created")
 
-model1.fit(trainX, outX, epochs=1000, batch_size=10)
+model1.fit(trainX, outX, epochs=1000)
 
 trainY = np.array(YFacesMeanDiff)
 outY = np.array(YCaricatures)
@@ -91,7 +91,7 @@ model2.add(Dense(68, activation='linear'))
 model2.compile(loss='mean_squared_error', optimizer='adam')
 print("Model2 Created")
 
-model2.fit(trainY, outY, epochs=1000, batch_size=10)
+model2.fit(trainY, outY, epochs=1000)
 
 
 displayResults.showCaricature(model1, model2, meanImageCoordinates)

@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import meshWarping
 from random import randint
+import matplotlib.pyplot as plt
 
 counter = 0
 
@@ -23,13 +24,35 @@ def drawPolyLines(imgFile,landMarkPoints):
         arr = np.array(finalFeaturePoints[i])
         cv2.polylines(image, np.int32([arr]), 0, (0, 255, 0))
     cv2.imshow(imgFile + str(counter), image)
+    return image
 
+def convImage(img):
+    b,g,r = cv2.split(img)
+    img = cv2.merge([r,g,b])
+    return img
 
 def showCaricature(model1, model2, meanImageCoordinates):
     global counter
-    imgFile = "Dataset/RealWorldImage/adi.jpg"
+    
+    fig = plt.figure()
+    axes=[]
+    axes.append(fig.add_subplot(2,2,1))
+    axes.append(fig.add_subplot(2,2,2))
+    axes.append(fig.add_subplot(2,2,3))
+    axes.append(fig.add_subplot(2,2,4))
+
+    axes[0].set_title("Original image")
+    axes[1].set_title("Caricature of image")
+    axes[2].set_title("Initial Landmark Points")
+    axes[3].set_title("Final Landmark Points")
+    
+    imgFile = "Dataset/temp2/6.jpg"
     initialLandmarkPoints = LM.saveAndReturnLandMarkPoints(imgFile)
-    drawPolyLines(imgFile, initialLandmarkPoints)
+
+    ima = cv2.imread(imgFile)
+    axes[0].imshow(convImage(ima))
+    ima = drawPolyLines(imgFile, initialLandmarkPoints)
+    axes[2].imshow(convImage(ima))
     counter += 1
 
     X = [initialLandmarkPoints[i][0] for i in range(len(initialLandmarkPoints))]
@@ -58,6 +81,10 @@ def showCaricature(model1, model2, meanImageCoordinates):
         finalLandMarkPoints.append([X[i],Y[i]])
         diffLandMarkPoints.append([Xtest[0][i], Ytest[0][i]])
 
-    drawPolyLines(imgFile, finalLandMarkPoints)
-    meshWarping.getWarpedImage(imgFile, diffLandMarkPoints)
-    cv2.waitKey(0)
+    ima = drawPolyLines(imgFile, finalLandMarkPoints)
+    axes[3].imshow(convImage(ima))
+    ima = meshWarping.getWarpedImage(imgFile, diffLandMarkPoints)
+    axes[1].imshow(convImage(ima))
+    plt.suptitle('Caricature Generation')
+    plt.show()
+    # cv2.waitKey(0)
